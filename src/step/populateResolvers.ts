@@ -46,8 +46,8 @@ type FromDirectiveProp = {
 
 let getFromDirective = (prop: FromDirectiveProp) => {
    class FromDirective extends SchemaDirectiveVisitor {
-      name: string
-      args: Record<string, any>
+      name!: string
+      args!: Record<string, any>
 
       extract(keyString: string) {
          return extract(keyString.split(' '), this.args)
