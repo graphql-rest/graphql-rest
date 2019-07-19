@@ -1,6 +1,6 @@
 {
-  "watch": ["src"],
-  "ext": "ts",
-  "ignore": ["src/**/*.test.ts"],
-  "exec": "yarn start"
+   "watch": ["src"],
+   "ext": "ts",
+   "ignore": ["src/**/*.test.ts"],
+   "exec": "yarn start"
 }

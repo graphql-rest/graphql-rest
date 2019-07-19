@@ -1,41 +1,46 @@
 {
-  "compilerOptions": {
-    /* Basic Options */
-    "allowJs": false,
-    "resolveJsonModule": true,
-
-    "target": "es2018",
-    "module": "esnext",
-
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-
-    "declaration": true,
-    "sourceMap": true,
-    "removeComments": false,
-    "noLib": false,
-    "skipLibCheck": true,
-    "types": ["node", "jest"],
-    "lib": ["dom", "es2015", "es2016", "es2017", "esnext.asynciterable"],
-    "keyofStringsOnly": true,
-
-    /* Strict Type-Checking Options */
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    // "alwaysStrict": true,
-
-    /* Experimental Options */
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-
-    /* Module Resolution Options */
-    "baseUrl": "./",
-    "outDir": "dist",
-    "paths": {
-      "@app/*": ["./src/*"]
-    }
-  }
+   "compilerOptions": {
+      /* Basic Options */
+      "allowJs": false,
+      "resolveJsonModule": true,
+      "target": "es2018",
+      "module": "esnext",
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "moduleResolution": "node",
+      "declaration": true,
+      "sourceMap": true,
+      "removeComments": false,
+      "noLib": false,
+      "skipLibCheck": true,
+      "types": [
+         "node",
+         "jest"
+      ],
+      "lib": [
+         "dom",
+         "es2015",
+         "es2016",
+         "es2017",
+         "esnext.asynciterable"
+      ],
+      "keyofStringsOnly": true,
+      /* Strict Type-Checking Options */
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "strictPropertyInitialization": true,
+      "noImplicitThis": true,
+      // "alwaysStrict": true,
+      /* Experimental Options */
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      /* Module Resolution Options */
+      "baseUrl": "./",
+      "outDir": "dist",
+      "paths": {
+         "@app/*": [
+            "./src/*"
+         ]
+      }
+   }
 }
