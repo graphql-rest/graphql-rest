@@ -10,6 +10,10 @@ GraphQL. This is possible thanks to GraphQL directives (aka. GraphQL
 annotations), and made easy to implement by the graphql-tools module from the
 Apollo GraphQL project.
 
+## How it works
+
+![Schema explananing how graphql-rest works](doc/ExplainGraphqlRest.png)
+
 ## 1. Add the library to your JS / TS project
 
 With yarn:
