@@ -20,14 +20,7 @@
       "rest-api",
       "typescript"
    ],
-   "scripts": {
-      "start": "npm run ts-run ./src/index.ts",
-      "ts-run": "ts-node -T -r tsconfig-paths/register --project tsconfig.dev.json",
-      "dev": "nodemon --config .nodemon.json",
-      "mock": "npm run ts-run src/__tests__/run-mock-server.ts",
-      "test": "cross-env NODE_ENV=testing jest",
-      "test:coverage": "cross-env NODE_ENV=testing jest --coverage"
-   },
+   "scripts": {},
    "dependencies": {
       "graphql": "^14.4.2",
       "graphql-tools": "^4.0.5",
