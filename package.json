@@ -3,7 +3,7 @@
    "version": "0.1.0",
    "description": "Turn your REST API into GraphQL - A Proxy Server that pipes request from GraphQL to REST with GraphQL DSL, performant nested children, mutations, input types, and more.",
    "main": "dist/main.js",
-   "repository": "git@github.com:mathieucaroff/graphql-rest",
+   "repository": "git@github.com:graphql-rest/graphql-rest",
    "author": {
       "email": "mathieu.caroff@free.fr",
       "name": "Mathieu CAROFF",
@@ -11,11 +11,13 @@
    },
    "license": "MIT",
    "keywords": [
-      "cli-app",
-      "expressjs",
+      "apollo",
+      "apollo-server",
       "graphql",
       "graphql-server",
+      "graphql-playground",
       "javascript",
+      "playground",
       "rest",
       "rest-api",
       "typescript"
