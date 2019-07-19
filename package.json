@@ -29,10 +29,12 @@
     "test:coverage": "cross-env NODE_ENV=testing jest --coverage"
   },
   "dependencies": {
-    "graphql": "^14.4.2"
+    "graphql": "^14.4.2",
+    "jest": "^24.8.0"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.2",
+    "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
     "nodemon": "^1.19.1",
     "npm-check-updates": "^3.1.20",
