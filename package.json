@@ -1,0 +1,42 @@
+{
+  "name": "graphql-rest",
+  "version": "0.0.1",
+  "description": "Turn your REST API into GraphQL - A Proxy Server that pipes request from GraphQL to REST with GraphQL DSL, performant nested children, mutations, input types, and more.",
+  "main": "dist/main.js",
+  "repository": "git@github.com:mathieucaroff/graphql-rest",
+  "author": {
+    "email": "mathieu.caroff@free.fr",
+    "name": "Mathieu CAROFF",
+    "url": "https://github.com/mathieucaroff"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cli-app",
+    "expressjs",
+    "graphql",
+    "graphql-server",
+    "javascript",
+    "rest",
+    "rest-api",
+    "typescript"
+  ],
+  "scripts": {
+    "start": "npm run ts-run ./src/index.ts",
+    "ts-run": "ts-node -T -r tsconfig-paths/register --project tsconfig.dev.json",
+    "dev": "nodemon --config .nodemon.json",
+    "mock": "npm run ts-run src/__tests__/run-mock-server.ts",
+    "test": "cross-env NODE_ENV=testing jest",
+    "test:coverage": "cross-env NODE_ENV=testing jest --coverage"
+  },
+  "dependencies": {
+    "graphql": "^14.4.2"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.2.2",
+    "@types/node": "^12.6.8",
+    "nodemon": "^1.19.1",
+    "npm-check-updates": "^3.1.20",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.3"
+  }
+}
