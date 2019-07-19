@@ -1,8 +1,9 @@
 {
    "name": "graphql-rest",
-   "version": "0.1.1",
+   "version": "0.0.1-pre",
    "description": "Turn your REST API into GraphQL - A Proxy Server that pipes request from GraphQL to REST with GraphQL DSL, performant nested children, mutations, input types, and more.",
-   "main": "dist/main.js",
+   "main": "dist/index.js",
+   "types": "dist/index.d.ts",
    "files": [
       "dist"
    ],
@@ -25,7 +26,9 @@
       "rest-api",
       "typescript"
    ],
-   "scripts": {},
+   "scripts": {
+      "prepare": "in-publish && tsc"
+   },
    "dependencies": {
       "graphql": "^14.4.2",
       "graphql-tools": "^4.0.5",
@@ -39,6 +42,8 @@
       "@types/graphql": "^14.2.2",
       "@types/jest": "^24.0.15",
       "@types/node": "^12.6.8",
+      "@types/node-fetch": "^2.3.7",
+      "in-publish": "^2.0.0",
       "nodemon": "^1.19.1",
       "np": "^5.0.3",
       "npm-check-updates": "^3.1.20",
