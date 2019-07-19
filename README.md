@@ -29,10 +29,11 @@ npm install --save graphql-rest fetch graphql
 ```
 
 You might want to use apollo-server and nodemon for a greater GraphQL
-development experience:
+development experience. Use one of:
 
 ```sh
 yarn add --dev apollo-server nodemon
+npm install --save-dev apollo-server nodemon
 ```
 
 ## 2. Instantiate GraphqlRest
