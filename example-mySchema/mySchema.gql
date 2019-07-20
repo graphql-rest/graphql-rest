@@ -1,0 +1,73 @@
+# This header declares the `from` directive that GraphqlRest implements
+directive @from(
+  "Config"
+  configUrlBase: String
+  configQueryStringAdditions: [String]
+  "Rename a REST result property"
+  prop: String
+  "REST calls"
+  get: String
+  delete: String
+  patch: String
+  post: String
+  put: String
+  "Specify a path to the property in the JSON result to use as field value"
+  root: String
+) on OBJECT | FIELD_DEFINITION
+# Passing { addHeader: true } allows to omit the header, but is not recommended
+# if you are going to use any GraphQL linting tool, as the GraphQL specification
+# requires declaring the directives you use
+
+# Using @from(get) allows you to specify the URL and REST method to use for the
+# resolver. Any word preceded by `:` will undergo substitution
+# A word is /[A-Za-z_]+/
+type Query @from(configUrlBase: "https://myApiUrlBase.org/v2/") {
+  image(id: ID!): Image @from(get: "/:id.json")
+  user(name: ID!): User @from(get: "/profiles/:name.json")
+  search(
+    query: String!
+    sort: SortFieldInput = created_at
+    order: SortOrderInput = desc
+    page: Int = 1
+    perpage: Int = 15
+  ): SearchPage!
+    @from(
+      get: "/search.json?q=:query&sf=:sort&sd=:order&page=:page&perpage=:perpage"
+    )
+}
+
+scalar CommaSpaceSeparatedString
+scalar Date
+scalar Extension
+scalar Mime
+scalar Sha512
+scalar Url
+
+enum SortFieldInput {
+  created_at
+  score
+  random
+}
+
+# Here things get interesting, see the substitution is not only possible with
+# GraphQL arguments, but also with the values returned from the REST API call.
+# If you are familiar with GraphQL resolvers, here `:uploader_id` is found in
+# the `parent` (or `source` ) field of the resolver. This is what enables the
+# nesting power of GraphQL
+type Image {
+  representations: Representations
+  score: Int!
+  updated_at: Date!
+  uploader_id: ID
+  uploader_info: User @from(get: "/profiles/:uploader_id.json")
+}
+
+type SearchPage {
+  search: [Image!]!
+  total: Int!
+}
+
+type User {
+  id: ID
+  name: String!
+}

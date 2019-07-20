@@ -1,0 +1,17 @@
+{
+  "name": "example-mySchema",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+     "dev": "nodemon --ext .gql --ext .graphql server.js"
+  },
+  "dependencies": {
+    "fetch": "^1.1.0",
+    "graphql": "^14.4.2",
+    "graphql-rest": "^0.0.1-alpha"
+  },
+  "devDependencies": {
+    "apollo-server": "^2.7.0",
+    "nodemon": "^1.19.1"
+  }
+}
