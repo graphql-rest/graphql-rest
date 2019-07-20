@@ -38,9 +38,17 @@ npm install --save-dev apollo-server nodemon
 
 ## 2. Instantiate GraphqlRest
 
-`server.js`
+A. Create `mySchema.gql`
 
-Import the dependencies
+```gql
+type Query {
+  hello: Int
+}
+```
+
+B. Create `server.js`
+
+B1. Import the dependencies:
 
 - commonjs style, if you use vanilla node:
 
@@ -62,7 +70,7 @@ import { ApolloServer } from 'apollo-server'
 import { GraphqlRest } from 'graphql-rest'
 ```
 
-Start the server:
+B2. Start the server:
 
 ```ts
 const PORT = 4000
@@ -84,10 +92,9 @@ server.listen({ port: PORT }).then(() => {
 })
 ```
 
-Then create `mySchema.gql` and run the Apollo Server with nodemon (replace `yarn` by `npm run` if you use npm):
+C. Run the Apollo Server with nodemon (replace `yarn` by `npm run` if you use npm):
 
 ```sh
-touch mySchema.gql
 yarn nodemon --ext .gql server.js
 ```
 
@@ -97,9 +104,7 @@ You will get an output like:
 [nodemon] 1.19.1
 [nodemon] to restart at any time, enter `rs`
 [nodemon] watching: *.*
-[nodemon] starting `node --inspect ./dist/dev/playground.js`
-Debugger listening on ws://127.0.0.1:9229/c7c8dbfe-99c5-45d0-bfa5-3b0d86c13bd0
-For help, see: https://nodejs.org/en/docs/inspector
+[nodemon] starting `node server.js`
 Serving the GraphQL Playground on http://localhost:4000/playground
 ```
 
@@ -109,7 +114,7 @@ Note:
 If you are going to be using GraphqlRest in a web browser, consider using node
 while developing the GraphQL schaema for the API.
 
-## 3. Write the annotated GraphQL Schema
+## 3. Develop your annotated GraphQL Schema
 
 `mySchema.gql`
 

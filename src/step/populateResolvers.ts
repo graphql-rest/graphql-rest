@@ -45,6 +45,8 @@ type FromDirectiveProp = {
 }
 
 let getFromDirective = (prop: FromDirectiveProp) => {
+   let resolverCount = 0
+
    class FromDirective extends SchemaDirectiveVisitor {
       name!: string
       args!: Record<string, any>
@@ -165,6 +167,7 @@ let getFromDirective = (prop: FromDirectiveProp) => {
 
          let resolver: UResolver = restResolver || propertyResolver
          if (resolver) {
+            resolverCount += 1
             field.resolve = resolver
          }
          let newField: GraphQLField<any, any> = { ...field }
@@ -179,7 +182,17 @@ let getFromDirective = (prop: FromDirectiveProp) => {
          return object
       }
    }
-   return FromDirective
+
+   let postSchema = () => {
+      if (resolverCount > 0 && prop.config.configUrlBase === undefined) {
+         throw ono('No base url configured', prop.config)
+      }
+   }
+
+   return {
+      fromDirectiveClass: FromDirective,
+      postSchema,
+   }
 }
 
 export const populateResolvers = (typeDefs: ITypeDefinitions, fetch: Fetch) => {
@@ -190,15 +203,13 @@ export const populateResolvers = (typeDefs: ITypeDefinitions, fetch: Fetch) => {
          configQueryStringAdditions: [],
       },
    }
-   let fromDirectiveClass = getFromDirective(prop)
+   let { fromDirectiveClass, postSchema } = getFromDirective(prop)
    let schema = makeExecutableSchema({
       typeDefs: typeDefs,
       schemaDirectives: {
          from: fromDirectiveClass,
       },
    })
-   if (prop.config.configUrlBase === undefined) {
-      throw ono('No url base configured', prop.config)
-   }
+   postSchema()
    return schema
 }
