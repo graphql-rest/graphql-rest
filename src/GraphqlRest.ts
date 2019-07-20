@@ -25,17 +25,17 @@ export class GraphqlRest {
    prop: {
       fetch: Fetch
    }
-   annotatedSchemaText: string
-   constructor(annotatedSchemText, prop) {
-      this.annotatedSchemaText = annotatedSchemText
+   rawSchemaText: string
+   constructor(rawSchemaText, prop) {
+      this.rawSchemaText = rawSchemaText
       this.prop = prop
    }
-   get annotatedSchema() {
-      return cached(() => buildSchema(this.annotatedSchemaText))
+   get rawSchema() {
+      return cached(() => buildSchema(this.rawSchemaText))
    }
    get schema() {
       return cached(() => {
-         let schema = this.annotatedSchemaText
+         let schema = this.rawSchemaText
          return populateResolvers(schema, this.prop.fetch)
       })
    }
