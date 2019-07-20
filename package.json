@@ -27,6 +27,7 @@
       "typescript"
    ],
    "scripts": {
+      "cleanup": "rm -r dist",
       "prepare": "in-publish && tsc"
    },
    "dependencies": {
