@@ -6,12 +6,12 @@
      "dev": "nodemon --ext .gql --ext .graphql server.js"
   },
   "dependencies": {
-    "fetch": "^1.1.0",
-    "graphql": "^14.4.2",
-    "graphql-rest": "^0.0.1-alpha"
+    "fetch": ">=1.1.0",
+    "graphql": ">=14.4.2",
+    "graphql-rest": ">=0.2.0"
   },
   "devDependencies": {
-    "apollo-server": "^2.7.0",
-    "nodemon": "^1.19.1"
+    "apollo-server": ">=2.7.0",
+    "nodemon": ">=1.19.1"
   }
 }
