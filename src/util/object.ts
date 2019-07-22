@@ -12,3 +12,11 @@ export const fromEntries = <T>(iterable: [string, T][]): Record<string, T> => {
    })
    return obj
 }
+
+export const keys = (obj: Record<any, unknown>): string[] => {
+   return Object.keys(obj)
+}
+
+export const values = <T>(obj: Record<any, T>): T[] => {
+   return Object.values(obj)
+}

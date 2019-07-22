@@ -17,7 +17,7 @@ import ono from 'ono'
 
 import { SchemaDirectiveVisitor, makeExecutableSchema } from 'graphql-tools'
 
-import { concatSlash, extract, fromEntries } from '../util'
+import { concatSlash, extract, fromEntries, keys } from '../util'
 
 type GetValue = (
    parent: Record<any, any>,
@@ -36,12 +36,14 @@ type Pair = [string, string]
 type Resolver = GraphQLFieldResolver<Record<any, any>, any>
 type UResolver = Resolver | undefined
 
-type FromDirectiveProp = {
+export type FromDirectiveConfig = {
+   configUrlBase: string
+   configQueryStringAdditions: string[]
+}
+
+export type FromDirectiveProp = {
    fetch: Fetch
-   config: {
-      configUrlBase?: string
-      configQueryStringAdditions: string[]
-   }
+   config: Partial<FromDirectiveConfig>
 }
 
 let getFromDirective = (prop: FromDirectiveProp) => {
@@ -58,11 +60,8 @@ let getFromDirective = (prop: FromDirectiveProp) => {
          let configPairList: Pair[] = this.extract(
             'configUrlBase configQueryStringAdditions',
          )
-         let newConfig = fromEntries(configPairList)
-         return {
-            ...prop.config,
-            ...newConfig,
-         }
+         let configAdditions = fromEntries(configPairList)
+         return configAdditions
       }
       getGetValue: GetGetValue = ({ name, field }) => (
          parent,
@@ -88,7 +87,7 @@ let getFromDirective = (prop: FromDirectiveProp) => {
       resolverFromRestParameter(field: GraphQLField<any, any>) {
          let restKeyList: Pair[] = this.extract('get delete patch post put')
          if (restKeyList.length > 1) {
-            throw ono('Several rest parameters supplied', restKeyList, field)
+            throw ono('Several rest subdirectives supplied', restKeyList, field)
          }
          if (restKeyList.length == 1) {
             let [[method, uriTemplate]] = restKeyList
@@ -121,7 +120,7 @@ let getFromDirective = (prop: FromDirectiveProp) => {
                   })
                   let concatUrl = concatSlash(prop.config.configUrlBase, uri)
                   let urlObj = new url.URL(concatUrl)
-                  let qs = prop.config.configQueryStringAdditions
+                  let qs = prop.config.configQueryStringAdditions || []
                   qs.forEach((param) => {
                      let [key, value] = param.split('=')
                      urlObj.searchParams.append(key, value)
@@ -176,6 +175,16 @@ let getFromDirective = (prop: FromDirectiveProp) => {
       visitObject(object: GraphQLObjectType): GraphQLObjectType {
          // Config Parameters //
          let config = this.extractConfig()
+         keys(config).forEach((k) => {
+            if (prop.config[k] !== undefined) {
+               throw ono(
+                  [
+                     `configuration ${k} specified twice -`,
+                     `- (value: [${prop.config[k]}], [${config[k]}])`,
+                  ].join(),
+               )
+            }
+         })
          if (config) {
             prop.config = config
          }
@@ -200,7 +209,7 @@ export const populateResolvers = (typeDefs: ITypeDefinitions, fetch: Fetch) => {
       fetch,
       config: {
          configUrlBase: undefined,
-         configQueryStringAdditions: [],
+         configQueryStringAdditions: undefined,
       },
    }
    let { fromDirectiveClass, postSchema } = getFromDirective(prop)
