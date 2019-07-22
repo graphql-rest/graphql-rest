@@ -25,24 +25,24 @@ directive @from(
 type Query @from(configUrlBase: "https://swapi.co/api") {
    film(
       id: ID
-   ): [Film!]! @from(get: "/films/{id}")
-   films: [Film!]! @from(get: "/films")
-   people: [Person!]! @from(get: "/people")
+   ): Film @from(get: "/films/{id}")
+   films: FilmResult @from(get: "/films")
+   people: PersonResult @from(get: "/people")
    person(
       id: ID
-   ): [Person!]! @from(get: "/people/{id}")
+   ): Person @from(get: "/people/{id}")
    planet(
       id: ID
-   ): [Planet!]! @from(get: "/planets/{id}")
-   planets: [Planet!]! @from(get: "/planets")
+   ): Planet @from(get: "/planets/{id}")
+   planets: PlanetResult @from(get: "/planets")
    specy(
       id: ID
-   ): [Specy!]! @from(get: "/species/{id}")
-   species: [Specy!]! @from(get: "/species")
+   ): Specy @from(get: "/species/{id}")
+   species: SpecyResult @from(get: "/species")
    starship(
       id: ID
-   ): [Starship!]! @from(get: "/starships/{id}")
-   starships: [Starship!]! @from(get: "/starships")
+   ): Starship @from(get: "/starships/{id}")
+   starships: StarshipResult @from(get: "/starships")
    # vehicle(s) ...
 }
 
@@ -76,6 +76,14 @@ type Film {
    url: ID
 }
 
+type FilmResult {
+   count: Int!
+   next: Url
+   previous: Url
+   results: [Film!]!
+}
+
+
 type Person {
    name: String
    height: String
@@ -99,6 +107,13 @@ type Person {
    url: ID
 }
 
+type PersonResult {
+   count: Int!
+   next: Url
+   previous: Url
+   results: [Person!]!
+}
+
 type Planet {
    name: String
    rotation_period: String
@@ -116,6 +131,13 @@ type Planet {
    created: Date
    edited: Date
    url: ID
+}
+
+type PlanetResult {
+   count: Int!
+   next: Url
+   previous: Url
+   results: [Planet!]!
 }
 
 type Specy {
@@ -136,6 +158,13 @@ type Specy {
    created: Date
    edited: Date
    url: ID
+}
+
+type StarshipResult {
+   count: Int!
+   next: Url
+   previous: Url
+   results: [Starship!]!
 }
 
 type Starship {
@@ -161,6 +190,13 @@ type Starship {
    url: ID
 }
 
+type StarshipResult {
+   count: Int!
+   next: Url
+   previous: Url
+   results: [Starship!]!
+}
+
 type Vehicle {
    name: String
    model: String
@@ -180,6 +216,13 @@ type Vehicle {
    created: Date
    edited: Date
    url: ID
+}
+
+type VehicleResult {
+   count: Int!
+   next: Url
+   previous: Url
+   results: [Vehicle!]!
 }
 
 # Some Regex used to turn JSON response into GraphQL:
