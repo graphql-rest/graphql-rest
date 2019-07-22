@@ -1,0 +1,187 @@
+# This header declares the `from` directive that GraphqlRest implements
+directive @from(
+   "Config"
+   configUrlBase: String
+   "Rename a REST result property"
+   prop: String
+   "REST calls"
+   get: String
+   delete: String
+   patch: String
+   post: String
+   put: String
+   "Specify a path to the property in the JSON result to use as field value"
+   root: String
+) on OBJECT | FIELD_DEFINITION
+# Passing { addHeader: true } allows to omit the header, but is not recommended
+# if you are going to use any GraphQL linting tool, as the GraphQL specification
+# requires declaring the directives you use
+# ---
+
+# ---
+# Using @from(get) allows you to specify the URL and REST method to use for the
+# resolver. Any word preceded by `:` will undergo substitution
+# A word is /[A-Za-z_]+/
+type Query @from(configUrlBase: "https://swapi.co/api") {
+   film(
+      id: ID
+   ): [Film!]! @from(get: "/films/{id}")
+   films: [Film!]! @from(get: "/films")
+   people: [Person!]! @from(get: "/people")
+   person(
+      id: ID
+   ): [Person!]! @from(get: "/people/{id}")
+   planet(
+      id: ID
+   ): [Planet!]! @from(get: "/planets/{id}")
+   planets: [Planet!]! @from(get: "/planets")
+   specy(
+      id: ID
+   ): [Specy!]! @from(get: "/species/{id}")
+   species: [Specy!]! @from(get: "/species")
+   starship(
+      id: ID
+   ): [Starship!]! @from(get: "/starships/{id}")
+   starships: [Starship!]! @from(get: "/starships")
+   # vehicle(s) ...
+}
+
+scalar Date
+scalar Url
+
+# Here things get interesting, see the substitution is not only possible with
+# GraphQL arguments, but also with the values returned from the REST API call.
+# If you are familiar with GraphQL resolvers, here `:uploader_id` is found in
+# the `parent` (or `source` ) field of the resolver. This is what enables the
+# nesting power of GraphQL
+type Film {
+   title: String
+   episode_id: Int
+   opening_crawl: String
+   director: String
+   producer: String
+   release_date: Date
+   character_ids: [ID!]! @from(prop: "characters")
+   character_infos: [Person!]! @from(get: "/people/{[characters]}")
+   planet_ids: [ID!]! @from(prop: "planets")
+   planet_infos: [Planet!]! @from(get: "/planets/{[planets]}")
+   starship_ids: [ID!]! @from(prop: "starships")
+   starship_infos: [Starship!]! @from(get: "/starships/{[starships]}")
+   vehicle_ids: [ID!]! @from(prop: "vehicles")
+   vehicle_infos: [Vehicle!]! @from(get: "/vehicles/{[vehicles]}")
+   specie_ids: [ID!]! @from(prop: "species")
+   specie_infos: [Specy!]! @from(get: "/species/{[species]}")
+   created: Date
+   edited: Date
+   url: ID
+}
+
+type Person {
+   name: String
+   height: String
+   mass: String
+   hair_color: String
+   skin_color: String
+   eye_color: String
+   birth_year: String
+   gender: String
+   homeworld: String
+   film_ids: [ID!]! @from(prop: "films")
+   film_infos: [Film!]! @from(get: "/films/{[films]}")
+   specie_ids: [ID!]! @from(prop: "species")
+   specie_infos: [Specy!]! @from(get: "/species/{[species]}")
+   vehicle_ids: [ID!]! @from(prop: "vehicles")
+   vehicle_infos: [Vehicle!]! @from(get: "/vehicles/{[vehicles]}")
+   starship_ids: [ID!]! @from(prop: "starships")
+   starship_infos: [Starship!]! @from(get: "/starships/{[starships]}")
+   created: Date
+   edited: Date
+   url: ID
+}
+
+type Planet {
+   name: String
+   rotation_period: String
+   orbital_period: String
+   diameter: String
+   climate: String
+   gravity: String
+   terrain: String
+   surface_water: String
+   population: String
+   resident_ids: [ID!]! @from(prop: "residents")
+   resident_infos: [Person!]! @from(get: "/people/{[residents]}")
+   film_ids: [ID!]! @from(prop: "films")
+   film_infos: [Film!]! @from(get: "/films/{[films]}")
+   created: Date
+   edited: Date
+   url: ID
+}
+
+type Specy {
+   name: String
+   classification: String
+   designation: String
+   average_height: String
+   skin_colors: String
+   hair_colors: String
+   eye_colors: String
+   average_lifespan: String
+   homeworld: String
+   language: String
+   person_ids: [ID!]! @from(prop: "people")
+   person_infos: [Person!]! @from(get: "/people/{[people]}")
+   film_ids: [ID!]! @from(prop: "films")
+   film_infos: [Film!]! @from(get: "/films/{[films]}")
+   created: Date
+   edited: Date
+   url: ID
+}
+
+type Starship {
+   name: String
+   model: String
+   manufacturer: String
+   cost_in_credits: String
+   length: String
+   max_atmosphering_speed: String
+   crew: String
+   passengers: String
+   cargo_capacity: String
+   consumables: String
+   hyperdrive_rating: String
+   MGLT: String
+   starship_class: String
+   pilot_ids: [ID!]! @from(prop: "pilots")
+   pilot_infos: [Person!]! @from(get: "/people/{[pilots]}")
+   film_ids: [ID!]! @from(prop: "films")
+   film_infos: [Film!]! @from(get: "/films/{[films]}")
+   created: Date
+   edited: Date
+   url: ID
+}
+
+type Vehicle {
+   name: String
+   model: String
+   manufacturer: String
+   cost_in_credits: String
+   length: String
+   max_atmosphering_speed: String
+   crew: String
+   passengers: String
+   cargo_capacity: String
+   consumables: String
+   vehicle_class: String
+   pilot_ids: [ID!]! @from(prop: "pilots")
+   pilot_infos: [Person!]! @from(get: "/people/{[pilots]}")
+   film_ids: [ID!]! @from(prop: "films")
+   film_infos: [Film!]! @from(get: "/films/{[films]}")
+   created: Date
+   edited: Date
+   url: ID
+}
+
+# Some Regex used to turn JSON response into GraphQL:
+# /^   (\w+)s: \[(\n *".*",?\n? *)*\],?/
+# "   $1_ids: [ID!]! @from(prop: "$1s")\n   $1_infos: [!]! @from(get: "/$1s/{[$1s]}")"

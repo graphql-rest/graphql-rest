@@ -4,9 +4,9 @@ const fetch = require('node-fetch')
 const { ApolloServer } = require('apollo-server')
 const { GraphqlRest } = require('../dist')
 
-const PORT = 4000
+const PORT = 5000
 
-let myApiGraphqlSchema = readFileSync(`${__dirname}/mySchema.gql`, 'utf-8')
+let myApiGraphqlSchema = readFileSync(`${__dirname}/swapi.gql`, 'utf-8')
 
 let myGraphqlApi = new GraphqlRest(myApiGraphqlSchema, { fetch })
 

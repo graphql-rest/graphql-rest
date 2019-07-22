@@ -1,14 +1,14 @@
 {
-  "name": "example-mySchema",
+  "name": "example-swapi",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
      "dev": "nodemon --ext .gql --ext .graphql server.js"
   },
   "dependencies": {
+    "node-fetch": "^2.6.0",
     "graphql": ">=14.4.2",
-    "graphql-rest": ">=0.2.0",
-    "node-fetch": "^2.6.0"
+    "graphql-rest": ">=0.2.0"
   },
   "devDependencies": {
     "apollo-server": ">=2.7.0",

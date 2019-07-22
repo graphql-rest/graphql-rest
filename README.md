@@ -202,6 +202,7 @@ type User {
 1. [x] Document the other useful properties of GraphqlRest instances
 1. [x] Document the lesser useful properties of GraphqlRest instances
 1. [x] Document the lesser useful features of GraphqlRest schemas
+1. [x] SWAPI (Star Wars API) example
 
 ### Coming soon
 
