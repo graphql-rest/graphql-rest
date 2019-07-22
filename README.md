@@ -1,4 +1,4 @@
-<img alt="GraphQL Rest Logo" src="doc/logo.svg" width="160" />
+[![GraphQL Rest Logo](doc/logo.png)](https://github.com/graphql-rest/graphql-rest)
 
 # graphql-rest
 
@@ -10,33 +10,30 @@ GraphQL. This is possible thanks to GraphQL directives (aka. GraphQL
 annotations), and made easy to implement by the graphql-tools module from the
 Apollo GraphQL project.
 
-## -- How it works --
+## How it works
 
 ![Schema explananing how graphql-rest works](doc/ExplainGraphqlRest.png)
 
-## 1. Add the library to your JS / TS project
+## Write your GraphQL schema
 
-With yarn:
+### 1. Add the library to your JS / TS project
 
-```sh
-yarn add graphql-rest fetch graphql
-```
-
-With npm:
+With yarn / npm:
 
 ```sh
-npm install --save graphql-rest fetch graphql
+yarn add graphql-rest fetch
+npm install --save graphql-rest fetch
 ```
 
-You might want to use apollo-server and nodemon for a greater GraphQL
-development experience. Use one of:
+You'll want to use apollo-server and nodemon for a greater GraphQL development
+experience. Install them with one of:
 
 ```sh
 yarn add --dev apollo-server nodemon
 npm install --save-dev apollo-server nodemon
 ```
 
-## 2. Instantiate GraphqlRest
+### 2. Instantiate GraphqlRest
 
 A. Create `mySchema.gql`
 
@@ -46,11 +43,11 @@ type Query {
 }
 ```
 
-B. Create `server.js`
+B. Create `server.js` and add:
 
-B1. Import the dependencies:
+B1. the code which imports the dependencies (choose your import style):
 
-- commonjs style, if you use vanilla node:
+- commonjs style, if you use vanilla nodejs:
 
 ```ts
 const { readFileSync } = require('fs')
@@ -70,7 +67,7 @@ import { ApolloServer } from 'apollo-server'
 import { GraphqlRest } from 'graphql-rest'
 ```
 
-B2. Start the server:
+B1. the code which starts the server:
 
 ```ts
 const PORT = 4000
@@ -114,16 +111,17 @@ Note:
 If you are going to be using GraphqlRest in a web browser, consider using node
 while developing the GraphQL schaema for the API.
 
-## 3. Develop your annotated GraphQL Schema
+### 3. Develop your annotated GraphQL Schema
 
-`mySchema.gql`
+Start editing `mySchema.gql`. Add the `@from` directive header, add the
+`@from(configUrlBase: "...")` configuration, and put
+`@from(get: "url_end_with_where/:x/will_be_substituted")`
 
 ```gql
 # This header declares the `from` directive that GraphqlRest implements
 directive @from(
   "Config"
   configUrlBase: String
-  configQueryStringAdditions: [String]
   "Rename a REST result property"
   prop: String
   "REST calls"
@@ -148,20 +146,13 @@ type Query @from(configUrlBase: "https://myApiUrlBase.org/v2/") {
   search(
     query: String!
     sort: SortFieldInput = created_at
-    order: SortOrderInput = desc
     page: Int = 1
     perpage: Int = 15
   ): SearchPage!
-    @from(
-      get: "/search.json?q=:query&sf=:sort&sd=:order&page=:page&perpage=:perpage"
-    )
+    @from(get: "/search.json?q=:query&sf=:sort&page=:page&perpage=:perpage")
 }
 
-scalar CommaSpaceSeparatedString
 scalar Date
-scalar Extension
-scalar Mime
-scalar Sha512
 scalar Url
 
 enum SortFieldInput {
@@ -176,8 +167,9 @@ enum SortFieldInput {
 # the `parent` (or `source` ) field of the resolver. This is what enables the
 # nesting power of GraphQL
 type Image {
-  representations: Representations
+  description: String
   score: Int!
+  url: Url
   updated_at: Date!
   uploader_id: ID
   uploader_info: User @from(get: "/profiles/:uploader_id.json")
@@ -191,10 +183,18 @@ type SearchPage {
 type User {
   id: ID
   name: String!
+  images(
+    sort: SortFieldInput = created_at
+    page: Int = 1
+    perpage: Int = 50
+  ): SearchPage
+    @from(
+      get: "/search.json?q=uploader_id%3A:id&sf=:sort&page=:page&perpage=:perpage"
+    )
 }
 ```
 
-## -- Development --
+## Development
 
 ### Done
 
@@ -205,13 +205,20 @@ type User {
 
 ### Coming soon
 
+1. [ ] Configure the syntax for argument replacement `"{x}/[y]"`
+1. [ ] Unit tests
 1. [ ] Mutation queries
 1. [ ] End to end (functional) tests
-1. [ ] Unit tests
 1. [ ] Documented way to use the library outside of development context
 1. [ ] Documented way to make a GraphQL use as a library
 1. [ ] Support for custom annotations with altered behaviour
 1. [ ] Support for GraphQL resolving list types from argument lists stacked type modifier, such as `[[ID]]` , `[ID!]` , `[ID]!` , `[[[ID!]!]!]!`
-1. [ ] Ability to specify a property to use in the JSON response rather the JSON root
+1. [ ] Possibility to specify a property to use as root in the JSON response rather the JSON root
+1. [ ] Possibility to specify a property to check for errors in the JSON response
+
+###
+
+### Not coming until someone requests it
+
 1. [ ] Ability to specify a JSON path to a `root` field in the JSON response
 1. [ ] Ability to access JSON nested properties when renaming a property

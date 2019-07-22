@@ -16,8 +16,11 @@
    viewBox="0 0 400 400"
    enable-background="new 0 0 400 400"
    xml:space="preserve"
-   sodipodi:docname="GraphQL_Logo.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"><metadata
+   sodipodi:docname="logo.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="C:\gd\graphql-rest\doc\logox10.png"
+   inkscape:export-xdpi="384"
+   inkscape:export-ydpi="384"><metadata
    id="metadata75"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
@@ -46,15 +49,15 @@
    guidetolerance="10"
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
-   inkscape:window-width="2560"
-   inkscape:window-height="1417"
+   inkscape:window-width="1920"
+   inkscape:window-height="1017"
    id="namedview71"
    showgrid="false"
    inkscape:zoom="2.8284271"
-   inkscape:cx="335.32819"
+   inkscape:cx="277.87576"
    inkscape:cy="296.74409"
-   inkscape:window-x="2552"
-   inkscape:window-y="-2"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
    inkscape:window-maximized="1"
    inkscape:current-layer="GraphQL_Logo" />
 
@@ -255,6 +258,7 @@
      x="82.232864"
      y="244.13477"
      style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:108px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui Bold';fill:#6b107b;fill-opacity:1;stroke:none;stroke-opacity:1">REST</tspan></text>
+
 <g
    transform="translate(-2.1520996e-6,1.3497925e-6)"
    id="g36-4"><g
