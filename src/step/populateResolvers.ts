@@ -128,7 +128,22 @@ let getFromDirective = (prop: FromDirectiveProp) => {
                   let restResponse = await prop.fetch(urlObj.href, {
                      method: method.toUpperCase(),
                   })
-                  let result = await restResponse.json()
+                  let result
+                  try {
+                     result = await restResponse.json()
+                  } catch (er) {
+                     let text
+                     try {
+                        let rText = await restResponse.text()
+                        text = rText
+                        if (rText.length > 90) {
+                           text = `${rText.slice(0, 44)}...${rText.slice(-44)}`
+                        }
+                     } catch (et) {
+                        throw er
+                     }
+                     throw ono(er, text)
+                  }
                   return result
                } catch (e) {
                   console.error(e.stack)
