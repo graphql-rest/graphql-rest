@@ -1,4 +1,4 @@
-# graphql-rest-api
+# graphql-rest-js-api
 
 ### GraphqlRest (also aliased to GraphQLRest)
 

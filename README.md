@@ -200,10 +200,14 @@ type User {
 
 1. [x] Ability to rename a REST property via annotation
 1. [x] Document the other useful properties of GraphqlRest instances
-1. [x] Document the lesser useful proporties of GraphqlRest instances
+1. [x] Document the lesser useful properties of GraphqlRest instances
+1. [x] Document the lesser useful features of GraphqlRest schemas
 
 ### Coming soon
 
+1. [ ] Mutation queries
+1. [ ] End to end (functional) tests
+1. [ ] Unit tests
 1. [ ] Documented way to use the library outside of development context
 1. [ ] Documented way to make a GraphQL use as a library
 1. [ ] Support for custom annotations with altered behaviour
@@ -211,7 +215,3 @@ type User {
 1. [ ] Ability to specify a property to use in the JSON response rather the JSON root
 1. [ ] Ability to specify a JSON path to a `root` field in the JSON response
 1. [ ] Ability to access JSON nested properties when renaming a property
-
-```
-
-```
