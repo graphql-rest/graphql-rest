@@ -64,3 +64,6 @@ pkg
 lib
 .merlin
 dist
+
+# misc
+tmp
