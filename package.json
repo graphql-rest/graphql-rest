@@ -28,9 +28,10 @@
    ],
    "scripts": {
       "cleanup": "rm -r dist",
-      "prepare": "in-publish && tsc"
+      "create-ts-index": "yarn cti -s src/step src/type src/util"
    },
    "dependencies": {
+      "@types/graphql": "^14.2.2",
       "graphql": "^14.4.2",
       "graphql-tools": "^4.0.5",
       "jest": "^24.8.0",
@@ -40,12 +41,12 @@
       "node-fetch": "^2.6.0"
    },
    "devDependencies": {
-      "@types/graphql": "^14.2.2",
       "@types/jest": "^24.0.15",
       "@types/node": "^12.6.8",
       "@types/node-fetch": "^2.3.7",
       "apollo-server": "^2.7.0",
-      "in-publish": "^2.0.0",
+      "create-ts-index": "^1.10.2",
+      "express": ">=4.17.1",
       "nodemon": "^1.19.1",
       "np": "^5.0.3",
       "npm-check-updates": "^3.1.20",

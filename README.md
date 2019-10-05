@@ -89,7 +89,7 @@ server.listen({ port: PORT }).then(() => {
 })
 ```
 
-C. Run the Apollo Server with nodemon (replace `yarn` by `npm run` if you use npm):
+C. Run the Apollo Server with nodemon (replace `yarn` by `npx` if you use npm):
 
 ```sh
 yarn nodemon --ext .gql server.js
@@ -109,7 +109,7 @@ Open your browser to http://localhost:4000/playground, where the GraphQL playgro
 
 Note:
 If you are going to be using GraphqlRest in a web browser, consider using node
-while developing the GraphQL schaema for the API.
+while developing the GraphQL schema for the API.
 
 ### 3. Develop your annotated GraphQL Schema
 
@@ -206,7 +206,7 @@ type User {
 
 ### Coming soon
 
-1. [ ] Configure the syntax for argument replacement `"{x}/[y]"`
+1. [ ] Configure the syntax for argument replacement `"{x}/(y)/()"`
 1. [ ] Unit tests
 1. [ ] Mutation queries
 1. [ ] End to end (functional) tests

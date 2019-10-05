@@ -6,18 +6,15 @@ const { GraphqlRest } = require('../dist')
 
 const PORT = 4000
 
-let myApiGraphqlSchema = readFileSync(`${__dirname}/mySchema.gql`, 'utf-8')
+let { schema } = new GraphqlRest(
+   readFileSync(`${__dirname}/mySchema.gql`, 'utf-8'),
+   { fetch },
+)
 
-let myGraphqlApi = new GraphqlRest(myApiGraphqlSchema, { fetch })
+let server = new ApolloServer({ schema })
 
-let { schema } = myGraphqlApi
-
-let server = new ApolloServer({
-   schema,
-})
-
-server.listen({ port: PORT }).then(() => {
+server.listen({ port: PORT }).then(({ port }) => {
    console.log(
-      `Serving the GraphQL Playground on http://localhost:${PORT}/playground`,
+      `Serving the GraphQL Playground on http://localhost:${port}/playground`,
    )
 })

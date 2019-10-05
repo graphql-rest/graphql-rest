@@ -4,12 +4,11 @@ module.exports = {
       '^.+\\.tsx?$': 'ts-jest',
       '^.+\\.jsx?$': 'ts-jest',
    },
-   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
    moduleNameMapper: {
       '^@app(.*)$': '<rootDir>/src$1',
    },
    collectCoverage: false,
-   coverageDirectory: './coverage/',
    collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
    automock: false,
    testEnvironment: 'jsdom',

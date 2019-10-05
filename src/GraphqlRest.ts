@@ -1,43 +1,40 @@
 // Type
 import { Fetch } from './type'
-
-// JS
-import { buildSchema, graphql, Source, ExecutionResult } from 'graphql'
-
-import { populateResolvers } from './step/populateResolvers'
-import ono from 'ono'
 import { ExecutionResultDataDefault } from 'graphql/execution/execute'
 
-let cached = (() => {
-   let cache = {}
-   return <T>(f: () => T): T => {
-      let key = `${f}`
-      if (!(key in cache)) {
-         cache[key] = f()
-      }
-      return cache[key]
-   }
-})()
+import { FromDirectiveConfig, GraphqlRestConfig } from './step'
+
+// JS
+import ono from 'ono'
+import { buildSchema, graphql, Source, ExecutionResult } from 'graphql'
+import { makeExecutableSchema } from 'graphql-tools'
+
+import { applyVisit, graphqlRestVisitor } from './step'
 
 type QueryResult = ExecutionResult<ExecutionResultDataDefault>
 
+type GraphqlRestProp = {
+   fetch: Fetch
+   config: Partial<FromDirectiveConfig>
+}
+
 export class GraphqlRest {
-   prop: {
-      fetch: Fetch
-   }
+   prop: GraphqlRestProp
    rawSchemaText: string
-   constructor(rawSchemaText, prop) {
+
+   constructor(rawSchemaText: string, prop: GraphqlRestProp) {
       this.rawSchemaText = rawSchemaText
       this.prop = prop
    }
    get rawSchema() {
-      return cached(() => buildSchema(this.rawSchemaText))
+      return buildSchema(this.rawSchemaText)
    }
    get schema() {
-      return cached(() => {
-         let schema = this.rawSchemaText
-         return populateResolvers(schema, this.prop.fetch)
-      })
+      let schema = makeExecutableSchema({ typeDefs: this.rawSchemaText })
+      let visitorSet = graphqlRestVisitor(this.prop)
+      applyVisit(schema, visitorSet)
+      visitSchema(schema, this.prop.fetch)
+      return schema
    }
    async query(source: Source | string): Promise<QueryResult> {
       return await graphql(this.schema, source)
