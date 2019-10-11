@@ -10,12 +10,14 @@ let graphqlRest = new GraphqlRest(schemaText, prop)
 
 schemaText
 
-The schema with whose `@from` annotations you would like resolved
+The schema whose `@from` annotations you would like resolved
 
+```js
 prop: {
-fetch
-addHeader: boolean = false
+  fetch,
+  addHeader: boolean = false
 }
+```
 
 fetch
 

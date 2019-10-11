@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1104"
+   height="500"
+   viewBox="0 0 292.09999 132.29167"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="explain-graphql-rest.svg"
+   inkscape:export-filename="C:\ox\deskpro-and-more\graphql-rest-derpibooru\graphql-rest\doc\explain-graphql-rest.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="557.12007"
+     inkscape:cy="168.12709"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-164.70832)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.317;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4868"
+       width="291.85831"
+       height="132.29843"
+       x="0.53453904"
+       y="164.96884" />
+    <path
+       style="fill:#e5c7da;fill-opacity:1;stroke:#e57ec3;stroke-width:0.317388;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 70.124717,208.43998 -2.765654,2.41743 -2.766176,2.41742 2.770864,2.40399 2.770862,2.40399 -0.0036,-3.54035 h 46.153567 v -2.49753 H 70.128365 Z"
+       id="rect4578"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#e5c7da;fill-opacity:1;stroke:#e57ec3;stroke-width:0.33470339;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 146.46653,224.57467 -2.39715,3.0897 -2.39714,3.09025 3.53043,-0.005 v 32.78178 h 2.49004 v -32.78449 l 3.59494,-0.003 -2.41056,-3.08427 z"
+       id="rect4578-8"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#e1d5e7;fill-opacity:1;stroke:#a98cb6;stroke-width:0.31753886;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 181.58919,208.45619 -2.76827,2.41742 -2.76882,2.41742 2.7735,2.40399 2.7735,2.40399 -0.004,-3.54035 h 46.19746 v -2.49753 h -46.20012 z"
+       id="rect4578-8-3"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#e1d5e7;fill-opacity:1;stroke:#a98cb6;stroke-width:0.31753886;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 222.09648,200.44495 2.76827,-2.41742 2.76881,-2.41742 -2.7735,-2.40399 -2.77349,-2.40399 0.004,3.54035 H 175.8931 v 2.49753 h 46.20012 z"
+       id="rect4578-8-3-1"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#e5c7da;fill-opacity:1;stroke:#e57ec3;stroke-width:0.317388;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 110.77013,201.28603 2.76565,-2.41742 2.76618,-2.41742 -2.77087,-2.40399 -2.77086,-2.40399 0.004,3.54035 H 64.610664 v 2.49753 h 46.156216 z"
+       id="rect4578-6"
+       inkscape:connector-curvature="0" />
+    <rect
+       id="rect3735-6"
+       width="59.234856"
+       height="42.63538"
+       x="227.78999"
+       y="181.56195"
+       style="fill:#ffffff;fill-opacity:0.48469388;stroke:#000000;stroke-width:0.29867104;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3735-6-9"
+       width="59.234856"
+       height="42.635384"
+       x="5.154469"
+       y="181.29466"
+       style="fill:#ffffff;fill-opacity:0.48469388;stroke:#000000;stroke-width:0.29867104;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3735-6-8"
+       width="59.234856"
+       height="42.635384"
+       x="116.60587"
+       y="181.56194"
+       style="fill:#ffffff;fill-opacity:0.48469388;stroke:#000000;stroke-width:0.29867104;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="90.494957"
+       y="177.75215"
+       id="text4636"><tspan
+         sodipodi:role="line"
+         x="90.494957"
+         y="177.75215"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4638">GraphQL</tspan><tspan
+         sodipodi:role="line"
+         x="90.494957"
+         y="187.45354"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4642">Request</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="201.43532"
+       y="178.26846"
+       id="text4636-6"><tspan
+         sodipodi:role="line"
+         x="201.43532"
+         y="178.26846"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4642-1">REST</tspan><tspan
+         sodipodi:role="line"
+         x="201.43532"
+         y="187.96985"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4669">Requests</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="203.1131"
+       y="227.18745"
+       id="text4636-6-1"><tspan
+         sodipodi:role="line"
+         x="203.1131"
+         y="227.18745"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4669-2">REST</tspan><tspan
+         sodipodi:role="line"
+         x="203.1131"
+         y="236.88884"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4698">Responses</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="142.82091"
+       y="270.9928"
+       id="text4636-6-1-1"><tspan
+         sodipodi:role="line"
+         x="142.82091"
+         y="270.9928"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4854">Annotated GraphQL schema</tspan><tspan
+         sodipodi:role="line"
+         x="142.82091"
+         y="280.69418"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4858">+</tspan><tspan
+         sodipodi:role="line"
+         x="142.82091"
+         y="290.39557"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4860">a single resolver</tspan><tspan
+         sodipodi:role="line"
+         x="142.82091"
+         y="299.34863"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4842" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="91.081306"
+       y="227.95128"
+       id="text4636-6-1-5"><tspan
+         sodipodi:role="line"
+         x="91.081306"
+         y="227.95128"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4742">GraphQL</tspan><tspan
+         sodipodi:role="line"
+         x="91.081306"
+         y="237.65266"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4698-0">Response</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="35.188957"
+       y="204.28532"
+       id="text4636-2"><tspan
+         sodipodi:role="line"
+         x="35.188957"
+         y="204.28532"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4642-13">Application</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="145.90916"
+       y="204.85971"
+       id="text4636-2-3"><tspan
+         sodipodi:role="line"
+         x="145.90916"
+         y="204.85971"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4642-13-7">[graphql-rest]</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="258.1731"
+       y="204.8597"
+       id="text4636-2-4"><tspan
+         sodipodi:role="line"
+         x="258.1731"
+         y="204.8597"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'segoe ui';-inkscape-font-specification:'segoe ui';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4642-13-0">[Foreign API]</tspan></text>
+  </g>
+</svg>

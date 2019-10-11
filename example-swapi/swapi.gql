@@ -1,74 +1,46 @@
-# This header declares the `from` and `graphqlRestConfig` directives that GraphqlRest
+# This header declares the `from` and `rest` directives that GraphqlRest
 # implements
 
-# graphqlRestConfig must be used once and only once
-directive @graphqlRestConfig(
-   "
-   base url
-   it can be empty, but must be set
-   "
-   baseUrl: String!
-   "time to wait"
-   rateLimit: Float = 0
-   "url syntax"
-   urlVariableStyle: String = "symmetric" # "comma"
-) on OBJECT | SCHEMA
-
 directive @from(
-   "Rename a REST result property"
-   prop: String
-   "REST calls -- only GET has been implemented yet"
-   get: String
-   delete: String
-   patch: String
-   post: String
-   put: String
-   "
-   Specify a different root field for the result content.
-   If your API consistenly uses a content root field, such as for instance
-   'data', you should change the below default value of `root` to be `data`
-   instead of null
-   "
-   root: String = null
-   "
-   Specify a field indicating that an error occured and the request should fail.
-   If your API may return an error field, you can pass its name to the `from`
-   directive through the 'error' argument.
-   "
-   error: String =   null
-) on FIELD_DEFINITION
-# Passing { addHeader: true } allows to omit the header, but is not recommended
-# if you are going to use any GraphQL linting tool, as the GraphQL specification
-# requires declaring the directives you use
+   prop: String!
+)
+
+directive @rest(
+   url: String!
+   method: String = "GET"
+   prefix: Boolean = true
+)
+
+# Passing { addHeader: true } allows to omit the header, but is not
+# recommended if you are going to use any GraphQL linting tool, as the
+# GraphQL specification requires declaring the directives you use.
 # ---
 
 # ---
 # Using @from(get) allows you to specify the URL and REST method to use for the
 # resolver. Any word preceded by `:` will undergo substitution
 # A word is /[A-Za-z_]+/
-type Query @graphqlRestConfig(
-   baseUrl: "https://swapi.co/api"
-) {
+type Query {
    film(
       id: ID
-   ): Film @from(get: "/films/(id)")
-   films: FilmResult @from(get: "/films")
+   ): Film @rest(url: "/films/(id)")
+   films: FilmResult @rest(url: "/films")
    person(
       id: ID
-   ): Person @from(get: "/people/(id)")
-   people: PersonResult @from(get: "/people")
+   ): Person @rest(url: "/people/(id)")
+   people: PersonResult @rest(url: "/people")
    planet(
       id: ID
-   ): Planet @from(get: "/planets/(id)")
-   planets: PlanetResult @from(get: "/planets")
+   ): Planet @rest(url: "/planets/(id)")
+   planets: PlanetResult @rest(url: "/planets")
    specy(
       id: ID
-   ): Specy @from(get: "/species/(id)")
-   species: SpecyResult @from(get: "/species")
+   ): Specy @rest(url: "/species/(id)")
+   species: SpecyResult @rest(url: "/species")
    starship(
       id: ID
-   ): Starship @from(get: "/starships/(id)")
-   starships: StarshipResult @from(get: "/starships")
+   ): Starship @rest(url: "/starships/(id)")
+   starships: StarshipResult @rest(url: "/starships")
    # vehicle(s) ...
 }
 
@@ -88,15 +60,15 @@ type Film {
    producer: String
    release_date: Date
    character_ids: [ID!]! @from(prop: "characters")
-   character_infos: [Person!]! @from(get: "/people/{[characters]}")
+   character_infos: [Person!]! @rest(url: "/people/{[characters]}")
    planet_ids: [ID!]! @from(prop: "planets")
-   planet_infos: [Planet!]! @from(get: "/planets/{[planets]}")
+   planet_infos: [Planet!]! @rest(url: "/planets/{[planets]}")
    starship_ids: [ID!]! @from(prop: "starships")
-   starship_infos: [Starship!]! @from(get: "/starships/{[starships]}")
+   starship_infos: [Starship!]! @rest(url: "/starships/{[starships]}")
    vehicle_ids: [ID!]! @from(prop: "vehicles")
-   vehicle_infos: [Vehicle!]! @from(get: "/vehicles/{[vehicles]}")
+   vehicle_infos: [Vehicle!]! @rest(url: "/vehicles/{[vehicles]}")
    specie_ids: [ID!]! @from(prop: "species")
-   specie_infos: [Specy!]! @from(get: "/species/{[species]}")
+   specie_infos: [Specy!]! @rest(url: "/species/{[species]}")
    created: Date
    edited: Date
    url: ID
@@ -121,13 +93,13 @@ type Person {
    gender: String
    homeworld: String
    film_ids: [ID!]! @from(prop: "films")
-   film_infos: [Film!]! @from(get: "{[films]}"")
+   film_infos: [Film!]! @rest(url: "{[films]}", prefix: false)
    specie_ids: [ID!]! @from(prop: "species")
-   specie_infos: [Specy!]! @from(get: "{[species]}")
+   specie_infos: [Specy!]! @rest(url: "{[species]}", prefix: false)
    vehicle_ids: [ID!]! @from(prop: "vehicles")
-   vehicle_infos: [Vehicle!]! @from(get: "{[vehicles]}")
+   vehicle_infos: [Vehicle!]! @rest(url: "{[vehicles]}", prefix: false)
    starship_ids: [ID!]! @from(prop: "starships")
-   starship_infos: [Starship!]! @from(get: "{[starships]}")
+   starship_infos: [Starship!]! @rest(url: "{[starships]}", prefix: false)
    created: Date
    edited: Date
    url: ID
@@ -151,9 +123,9 @@ type Planet {
    surface_water: String
    population: String
    resident_ids: [ID!]! @from(prop: "residents")
-   resident_infos: [Person!]! @from(get: "{[residents]}")
+   resident_infos: [Person!]! @rest(url: "{[residents]}")
    film_ids: [ID!]! @from(prop: "films")
-   film_infos: [Film!]! @from(get: "{[films]}")
+   film_infos: [Film!]! @rest(url: "{[films]}")
    created: Date
    edited: Date
    url: ID
@@ -178,9 +150,9 @@ type Specy {
    homeworld: String
    language: String
    person_ids: [ID!]! @from(prop: "people")
-   person_infos: [Person!]! @from(get: "{[people]}")
+   person_infos: [Person!]! @rest(url: "{[people]}")
    film_ids: [ID!]! @from(prop: "films")
-   film_infos: [Film!]! @from(get: "{[films]}")
+   film_infos: [Film!]! @rest(url: "{[films]}")
    created: Date
    edited: Date
    url: ID
@@ -208,9 +180,9 @@ type Starship {
    MGLT: String
    starship_class: String
    pilot_ids: [ID!]! @from(prop: "pilots")
-   pilot_infos: [Person!]! @from(get: "{[pilots]}")
+   pilot_infos: [Person!]! @rest(url: "{[pilots]}")
    film_ids: [ID!]! @from(prop: "films")
-   film_infos: [Film!]! @from(get: "{[films]}")
+   film_infos: [Film!]! @rest(url: "{[films]}")
    created: Date
    edited: Date
    url: ID
@@ -236,9 +208,9 @@ type Vehicle {
    consumables: String
    vehicle_class: String
    pilot_ids: [ID!]! @from(prop: "pilots")
-   pilot_infos: [Person!]! @from(get: "{[pilots]}")
+   pilot_infos: [Person!]! @rest(url: "{[pilots]}")
    film_ids: [ID!]! @from(prop: "films")
-   film_infos: [Film!]! @from(get: "{[films]}")
+   film_infos: [Film!]! @rest(url: "{[films]}")
    created: Date
    edited: Date
    url: ID
@@ -253,4 +225,4 @@ type VehicleResult {
 
 # Some Regex used to turn JSON response into GraphQL:
 # /^   (\w+)s: \[(\n *".*",?\n? *)*\],?/
-# "   $1_ids: [ID!]! @from(prop: "$1s")\n   $1_infos: $1Result @from(get: "{[$1s]}")"
+# "   $1_ids: [ID!]! @from(prop: "$1s")\n   $1_infos: $1Result @rest(url: "{[$1s]}")"
