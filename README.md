@@ -1,5 +1,8 @@
 [![GraphQL Rest Logo](doc/logo.png)](https://github.com/graphql-rest/graphql-rest)
 
+_This project is stalled until I get more experience with writing real world
+graphql-rest adapters._
+
 # graphql-rest
 
 Because programming with REST APIs is so boringly slow, and because GraphQL
@@ -12,7 +15,7 @@ Apollo GraphQL project.
 
 ## How it works
 
-![Schema explananing how graphql-rest works](doc/ExplainGraphqlRest.png)
+![Schema explaining how graphql-rest works](doc/ExplainGraphqlRest.png)
 
 ## Write your GraphQL schema
 
@@ -204,7 +207,7 @@ type User {
 1. [x] Document the lesser useful features of GraphqlRest schemas
 1. [x] SWAPI (Star Wars API) example
 
-### Coming soon
+### Coming ~~soon~~ hopefully before 2021
 
 1. [ ] Configure the syntax for argument replacement `"{x}/[y]"`
 1. [ ] Unit tests
